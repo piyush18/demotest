@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - npm install -g
+    pre_build:
+      commands:
+        - npm install
+    build:
+      commands:
+        - ng build --prod
+artifacts:
+  files:
+    - '**/*'
+   
