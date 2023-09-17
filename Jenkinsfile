@@ -18,8 +18,10 @@ node{
     }
     stage('Deployment of Docker Container'){
          def dockerrun='docker run -p 8080:8080 -d --name cloudpiyush piyushsharma8860/grovypipeline:latest' 
-       sshagent(['piyushtest']) {
+         def containerremove="docker container rm -f cloudpiyush"
+        sshagent(['piyushtest']) {
     // some block
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.14.125 ${containerremove}"
           sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.14.125 ${dockerrun}"
 
       
