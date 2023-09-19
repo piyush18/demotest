@@ -2,6 +2,10 @@ node{
     stage("Pull Source code from Git"){
     git 'https://github.com/piyush18/demotest.git'
     }
+    stage('Installing Modules')
+    {
+         sh 'npm install'
+    }
     stage('docker image')
     {
         sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
